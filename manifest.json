@@ -1,0 +1,43 @@
+{
+  "name": "Hacker News Comment Saver",
+  "version": "0.1.0",
+  "description": "Saving comments from hacker news items",
+  "permissions": ["storage", "tabs", "declarativeContent"],
+  "host_permissions": ["https://news.ycombinator.com/*"],
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://news.ycombinator.com/item?*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/view.png",
+        "assets/plus.png",
+        "assets/trash.png"
+      ],
+      "matches": ["https://news.ycombinator.com/*"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "assets/toolbar-icon.png",
+      "24": "assets/toolbar-icon.png",
+      "32": "assets/toolbar-icon.png"
+    },
+    "default_title": "Hacker News Comments",
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 3,
+  "icons": {
+    "16": "assets/ext-icon-16x16.png",
+    "32": "assets/ext-icon-32x32.png",
+    "48": "assets/ext-icon-48x48.png",
+    "128": "assets/ext-icon-128x128.png"
+  }
+}
